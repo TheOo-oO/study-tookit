@@ -1,0 +1,130 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>To-Do List App</title>
+</head>
+
+
+<body>
+    <div class="grid-container">
+        <div class="sidebar">
+            
+            <button class="drag-button">
+                <svg id="switcher-button-icon" viewBox="0 0 24 24" >
+                    <path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z"></path>
+                    <path fill="none" d="M0,0h24v24H0V0z"></path>
+                </svg>
+                
+            </button>
+            <div id="due-content">     
+                <h1 class="assessments">Task/Assessments</h1>
+                <button class="open-button" onclick="openForm()">Add Task/Assessment</button>
+                <button id="edit" class="edit-button" onclick="showDelete()">Edit</button>
+                <div class="form-popup" id="myForm">
+                    <form class="form-container">
+                        <span class="form-close" onclick="closeForm()"><i class="fas fa-times"></i></span>
+                        <input type="text" placeholder="Enter Subject" class="subject_box" maxlength="16"></input>
+                        <input type="text" class="description_box" placeholder="Description (optional)" maxlength="32"></input> 
+                        <input type="date" name="assessment_date" class="assessment_date" required></input>
+                        <span class="validity"></span>
+                        <select id="colours_list" name="colours" class="colourbox">
+                            <option value="#e6aa12">Default Colour</option>
+                            <option value="#D70040">Carmine (M&P)</option>
+                            <option value="#800020">Burgundy</option>
+                            <option value="#2E5894">B'dazzled blue</option>
+                            <option value="#0D98BA">Blue-green</option>
+                            <option value="#9966CC">Amethyst</option>
+                            <option value="#BD33A4">Byzantine</option>
+                            <option value="#ED9121">Carrot orange</option>
+                            <option value="#FE6F5E">Bittersweet</option>
+                            <option value="#A4C639">Android green</option>
+                            <option value="#568203">Avocado</option>
+                            <option value="#BFFF00">Bitter lime</option>
+                            <option value="#BFAFB2">Black Shadows</option>
+                        </select>
+                        <input type="color" id="colorpick" class="colorpick" value="#e6aa12">
+                        <input type="submit" class="add_button" value="Add Task/Assessment"></input>
+                    </form>
+                    
+                </div>
+                <!-- <p> <button id="start-button">Start</button> </p> -->
+                <ul class='assessment_list'></ul>
+            </div>
+        </div>
+        <div class="main-content">
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Todo')" id="defaultOpen">Todo</button>
+            <button class="tablinks" onclick="openCity(event, 'Todo-today')">Todo Today</button>
+            <button class="tablinks" onclick="openCity(event, 'Timer')">Timer</button>
+        </div>
+        
+        <!-- Tab content -->
+        <div id="Todo" class="tabcontent">
+            <!-- <h1> Yes Notepad </h1> -->
+            <div class="container wrapper">
+                <div id="notesWrapper" >
+                    <button class="new-note-btn">Add New Note/Todo</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Todo-today" class="tabcontent">
+            <div class="todo-background">
+                <header>
+                    <h1>Stoody boy</h1>
+                </header>
+                <!-- INPUT FIELD TO ENTER TASK AND DROPDOWN FILTER -->
+                <form>
+                    <input type="text" placeholder="Todo for Today" class="todo_input" />
+                    <button class="todo_button" type="submit">
+                        <i class="fas fa-plus-square"></i>
+                    </button>
+                    <div class="select">
+                        <select name="todos" class="filter_todo">
+                            <option value="all">All</option>
+                            <option value="completed">Completed</option>
+                            <option value="uncompleted">Uncompleted</option>
+                        </select>
+                    </div>
+                </form>
+                <!-- CONTAINER FOR DISPLAYING TO-DO LIST BY ADDING TASKS DYNAMICALLY USING JAVASCRIPT -->
+                <div class="todo_container">
+                    <ul class="todo_list"></ul>
+                </div>
+            </div>
+            
+        </div>
+
+        
+        <div id="Timer" class="tabcontent">
+            <div id="app" class="timer-body">
+                <header> <h1>dada</h1></header>
+            <!-- <div class="content"></div>
+            <div class="counter"></div>
+            <input id="seconds" type="number" placeholder="Seconds...">
+            <div class="buttons">
+                <button class="btn start" id="start" value="1" onclick="check(this)">Start</button>
+                <button class="btn start" id="continue" value="1" onclick="check(this)">Continue</button>
+                <button class="btn stop" id="stop" value="0" onclick="check(this)">Stop</button>
+                <button class="btn start" id="submit" onclick="subm()">Submit</button>
+        </div> -->
+        </div>
+              
+        </div>
+
+        </div>
+    </div>
+    
+    
+    <!-- ADDING JAVA SCRIPT -->
+    <script src="../app/index.js"></script>
+</body>
+
+</html>
