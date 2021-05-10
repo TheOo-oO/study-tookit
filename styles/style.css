@@ -308,6 +308,7 @@ select{
   }
   
   .base-timer__label {
+    color: black;
     position: absolute;
     width: 300px;
     height: 210;
@@ -369,10 +370,10 @@ select{
       border-bottom: 2px solid #eee;
     }
   
-  .minInput{
+  .minInput23{
     background: transparent;
     border: none;
-    color: white;
+    color: rgb(0, 0, 0);
 
     position: absolute;
     width: 70px;
@@ -382,14 +383,14 @@ select{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 48px;
+    font-size: 30px;
     outline: 0px solid transparent;
     margin: 0;
   }
-  .secInput{
+  .secInput23{
     background: transparent;
     border: none;
-    color: white;
+    color: rgb(0, 0, 0);
     
     position: absolute;
     width: 70px;
@@ -399,15 +400,15 @@ select{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 48px;
+    font-size: 30px;
     outline: 0px solid transparent;
     margin: 0;
   }
   /* Assessment clock countdown */
   /* asssessments due heading */
 .assessments{
-  display: table-cell;
-  white-space: nowrap;
+  /* display: table-cell; */
+  /* white-space: nowrap; */
   line-height: normal;
   width: 100%;
   float: left;
@@ -422,6 +423,75 @@ select{
   border-width: 1px;
   margin-bottom: 10px;
   color:rgb(119, 119, 119);
+}
+
+.tooltip{
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgba(172, 172, 172, 0.603);
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 350px;
+  background-color: rgba(117, 117, 117, 0.4);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 110%;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent rgb(117, 117, 117, 0.4) transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.assessments .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgb(117, 117, 117);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.assessments .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.assessments:hover .tooltiptext {
+  visibility: visible;
 }
 
 .edit-button{
@@ -493,12 +563,22 @@ select{
 
 
 
-.form-container .subject_box, .form-container .assessment_date, 
-.form-container .description_box{
+.form-container .subject_box, .form-container .assessment_date {
   width: 100%;
   font-size: 20px;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 5px 0 20px 0;
+  border: none;
+  display: block;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.form-container .description_box {
+  width: 100%;
+  font-size: 20px;
+  padding: 15px;
+  margin: 0px 0 0px 0;
   border: none;
   display: block;
   background: #f1f1f1;
@@ -976,13 +1056,3 @@ display: inline-block;
 .tc-note:hover {
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
 }
-
-/* Actual css */
-/* * {
-  box-sizing: border-box;
-} */
-
-/* #notesWrapper {
-  padding: 50px;
-} */
-

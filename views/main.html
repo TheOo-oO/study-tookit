@@ -24,14 +24,25 @@
                 
             </button>
             <div id="due-content">     
-                <h1 class="assessments">Task/Assessments</h1>
+                <div class="assessments">Task/Assessments
+                    <span class="tooltiptext">Tooltip text</span>
+                </div> 
                 <button class="open-button" onclick="openForm()">Add Task/Assessment</button>
                 <button id="edit" class="edit-button" onclick="showDelete()">Edit</button>
                 <div class="form-popup" id="myForm">
                     <form class="form-container">
                         <span class="form-close" onclick="closeForm()"><i class="fas fa-times"></i></span>
+                        <label class="tooltip">?
+                            <span class="tooltiptext">Fill in subject name (max 16 characters). Description (max 32 characters).
+                            </span>
+                        </label>
                         <input type="text" placeholder="Enter Subject" class="subject_box" maxlength="16"></input>
-                        <input type="text" class="description_box" placeholder="Description (optional)" maxlength="32"></input> 
+                        <input type="text" class="description_box" placeholder="Description (optional)" maxlength="32"></input>
+                        <label class="tooltip">?
+                            <span class="tooltiptext"> 
+                            Pick only FUTURE dates.
+                            </span>
+                        </label> 
                         <input type="date" name="assessment_date" class="assessment_date" required></input>
                         <span class="validity"></span>
                         <select id="colours_list" name="colours" class="colourbox">
@@ -50,6 +61,12 @@
                             <option value="#BFAFB2">Black Shadows</option>
                         </select>
                         <input type="color" id="colorpick" class="colorpick" value="#e6aa12">
+                        <span></span>
+                        <label class="tooltip">?
+                            <span class="tooltiptext">
+                            Select colour or use picker on the right. 
+                            </span>
+                        </label>
                         <input type="submit" class="add_button" value="Add Task/Assessment"></input>
                     </form>
                     
@@ -106,14 +123,20 @@
         <div id="Timer" class="tabcontent">
             <div id="app" class="timer-body">
                 <header> <h1>dada</h1></header>
-            <!-- <div class="content"></div>
-            <div class="counter"></div>
-            <input id="seconds" type="number" placeholder="Seconds...">
-            <div class="buttons">
-                <button class="btn start" id="start" value="1" onclick="check(this)">Start</button>
-                <button class="btn start" id="continue" value="1" onclick="check(this)">Continue</button>
-                <button class="btn stop" id="stop" value="0" onclick="check(this)">Stop</button>
-                <button class="btn start" id="submit" onclick="subm()">Submit</button>
+                <div class="base-timer">
+                    <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <g id="base-circle" class="base-timer__circle">
+                            <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                            </g>
+                    </svg>
+                    <span id="base-timer-label" class="base-timer__label" contenteditable="false" ></span>
+                    <input class="minInput" min="0" type="number" placeholder="MM" 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2"></input>
+                    <input class="secInput" min="0" max="60" type="number" placeholder="SS" 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2"></input>
+                    <button>Set</button>
+                    <span><button id="timer-button" class="timer-button" >Start</button></span>
+                  </div>
         </div> -->
         </div>
               

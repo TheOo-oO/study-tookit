@@ -131,49 +131,78 @@ const COLOR_CODES = {
     threshold: ALERT_THRESHOLD
   }
 };
+// document.getElementById("app").innerHTML = `
+// <div class="base-timer">
+//   <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+//     <g class="base-timer__circle">
+//       <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+//       <path
+//         id="base-timer-path-remaining"
+//         stroke-dasharray="283"
+//         class="base-timer__path-remaining ${remainingPathColor}"
+//         d="
+//           M 50, 50
+//           m -45, 0
+//           a 45,45 0 1,0 90,0
+//           a 45,45 0 1,0 -90,0
+//         "
+//       ></path>
+//     </g>
+    
+//   </svg>
+//   <span id="base-timer-label" class="base-timer__label" contenteditable="false" >${formatTime(
+//     timeLeft
+//   )}</span>
+//   <input class="minInput" min="0" type="number" placeholder="MM" 
+//   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2"></input>
+//   <input class="secInput" min="0" type="number" placeholder="SS" 
+//   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2"></input>
+//   <span><button id="timer-button" class="timer-button" >Start</button></span>
+// </div>
+// `;
 
-let TIME_LIMIT = 1000;
+// minInput.addEventListener("click")
+// secInput.addEventListener("click")
+
+const timeInput = document.querySelector('.add_button')
+timeInput.addEventListener("click", addAssessment)
+
+
+const minInput = document.querySelector(".minInput")
+const secInput = document.querySelector(".secInput")
+minInput.value = 0
+secInput.value = 10
+const min = parseInt(minInput.value)
+const sec = parseInt(secInput.value)
+
+let totalCountdown = min*60 + sec
+let TIME_LIMIT = totalCountdown;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
+ 
 
 
-document.getElementById("app").innerHTML = `
-<div class="base-timer">
-  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <g class="base-timer__circle">
-      <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-      <path
-        id="base-timer-path-remaining"
-        stroke-dasharray="283"
-        class="base-timer__path-remaining ${remainingPathColor}"
-        d="
-          M 50, 50
-          m -45, 0
-          a 45,45 0 1,0 90,0
-          a 45,45 0 1,0 -90,0
-        "
-      ></path>
-    </g>
-    
-  </svg>
-  <span id="base-timer-label" class="base-timer__label" contenteditable="false" >${formatTime(
-    timeLeft
-  )}</span>
-  <input class="minInput" min="0" type="number" placeholder="MM" 
-  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2"></input>
-  <input class="secInput" min="0" type="number" placeholder="SS" 
-  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2"></input>
-  <span><button id="timer-button" class="timer-button" >Start</button></span>
-</div>
-`;
+document.getElementById("base-circle").innerHTML= `
+<path
+id="base-timer-path-remaining"
+stroke-dasharray="283"
+class="base-timer__path-remaining ${remainingPathColor}"
+d="
+  M 50, 50
+  m -45, 0
+  a 45,45 0 1,0 90,0
+  a 45,45 0 1,0 -90,0
+"
+></path>`;
 
-// minInput.addEventListener("click")
-// secInput.addEventListener("click")
-const minInput = document.querySelector(".minInput")
-const secInput = document.querySelector(".secInput")
+document.getElementById("base-timer-label").innerText = formatTime(timeLeft)
 
+
+      
+// document.getElementById("base-timer-path-remaining").classList.add(`base-timer__path-remaining`)
+// document.getElementById("base-timer-path-remaining").innerText = remainingPathColor
 
 // let timeInput = document.getElementById("base-timer-label");
 
@@ -488,36 +517,6 @@ function getTimeRemaining(endtime) {
     };
   }
 
-  
-// function initializeClock(id, endtime) {
-//   const clock = document.getElementById(id);
-//   const daysSpan = clock.querySelector('.days');
-//   const hoursSpan = clock.querySelector('.hours');
-//   const minutesSpan = clock.querySelector('.minutes');
-//   // const secondsSpan = clock.querySelector('.seconds');
-
-//   function updateClock() {
-//     const t = getTimeRemaining(endtime);
-
-//     daysSpan.innerHTML = t.days;
-//     hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-//     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-//     // secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-//     if (t.total <= 0) {
-//       clearInterval(timeinterval);
-//     }
-//   }
-
-//   updateClock();
-//   const timeinterval = setInterval(updateClock, 1000);
-// }
-
-// const deadline = new Date(Date.parse(new Date()) + 10 * 24 * 60 * 60 * 1000);
-// const deadline = new Date(assessment_date);
-// initializeClock('clockdiv', deadline);
-
-
 // Sidebar
 const sidebar = document.querySelector('.sidebar');
 const mainContent = document.querySelector('.main-content');
@@ -534,38 +533,6 @@ document.querySelector('.drag-button').onclick = function () {
     switcher_btn.style.transform = "rotate(360deg)"
   }
 }
-
-
-
-
-// function openSidebar() {
-//   // Declare all variables
-//   var i, tabcontent, tablinks;
-
-//   // Get all elements with class="tabcontent" and hide them
-//   // tabcontent = document.getElementsByClassName("clock");
-//   // for (i = 0; i < tabcontent.length; i++) {
-//   //   tabcontent[i].style.display = "none";
-//   // }
-//   tabcontent = document.getElementById('test-button');
-//   if (tabcontent.style.display === 'none'){
-//     tabcontent.style.display = 'block';
-//   } else {
-//     tabcontent.style.display = 'none';
-//   }
-
-  // // Get all elements with class="tablinks" and remove the class "active"
-  // tablinks = document.getElementsByClassName("drag-button");
-  // for (i = 0; i < tablinks.length; i++) {
-  //   tablinks[i].className = tablinks[i].className.replace(" active", "");
-  // }
-
-  // // Show the current tab, and add an "active" class to the button that opened the tab
-  // document.getElementById(cityName).style.display = "block";
-  // evt.currentTarget.className += " active";
-// }
-
-
 
 //Note Taking Javasscript
 class Note {
